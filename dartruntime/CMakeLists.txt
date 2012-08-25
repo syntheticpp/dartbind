@@ -4,18 +4,22 @@
 
 
 if(NOT dartruntime_dir)
-    get_filename_component(dartruntime_dir ${CMAKE_SOURCE_DIR}/dartruntime ABSOLUTE)
+    get_filename_component(dartruntime_dir ${CMAKE_SOURCE_DIR}/dartruntime/source ABSOLUTE)
     if(NOT IS_DIRECTORY ${dartruntime_dir}/cmake)
         get_filename_component(dartruntime_dir ${CMAKE_SOURCE_DIR}/../dartruntime ABSOLUTE)
     endif()
     set(dartruntime_dir ${dartruntime_dir} PARENT_SCOPE)
 endif()
 
-
+message(STATUS)
 if(IS_DIRECTORY ${dartruntime_dir}/cmake)
-    message(STATUS "Using Dart form direcrory '${dartruntime_dir}'")
+    message(STATUS "Using Dart form directory '${dartruntime_dir}'")
 else()
-    message(FATAL_ERROR "Directory '${dartruntime_dir}' doesn't contain the dartruntime sources")
+    message(STATUS "Directory '${dartruntime_dir}' doesn't contain the dartruntime sources")
+    message(STATUS "Please checkout the submodule:\n")
+    message("       git submodule init")
+    message("       git submodule update\n")
+    message(FATAL_ERROR "Aborting now")
 endif()
 
 

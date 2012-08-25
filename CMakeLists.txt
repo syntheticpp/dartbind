@@ -25,7 +25,6 @@ endif()
 
 
 add_subdirectory(dartruntime)
-message(STATUS "dart_includes: ${dart_includes}")
 
 
 enable_testing()
@@ -42,5 +41,4 @@ endmacro()
 
 p_addExecutables(examples bind_ NativeFunction_foo NativeFunction_userdata NativeFunction_nativefield NativeFunction_class)
 #p_addExecutables(examples "" minimal_http_server)
-
 
